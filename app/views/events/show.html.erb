@@ -1,0 +1,39 @@
+<div id="left_div" style="float: left">
+  <div id="event_info">
+    <table>
+      <tr>
+        <td>Host:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Date:</td>
+        <td><%= @event.date %></td>
+      </tr>
+      <tr>
+        <td>Location:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>People Who are joining the event</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  <div id="event_attendees">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>State</th>
+      </tr>
+    </table>
+  </div>
+</div>
+<div id="right_div" style="float: right">
+  <h1>Discussion about the event</h1>
+  <textarea name="disscussion" id="discussion" cols="60" rows="10">
+    <%= @event.discussion %>
+  </textarea>
+  <h1>Add Comment:</h1>
+</div>

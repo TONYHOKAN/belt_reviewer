@@ -1,16 +1,31 @@
 <header id="page-header">
   <div id="header">
-    <% if current_user %>
-        <h1 style="float: left">Welcome <%= current_user.first_name %></h1>
-        <nav style="float: right">
-          <p>
-            <%= link_to "Edit my profile", current_user %>
-            <%= link_to "Logout", session_path, method: :delete %>
-          </p>
-        </nav>
+    <% if @event %>
+        <% if current_user %>
+            <h1 style="float: left"><%= @event.name %></h1>
+            <nav style="float: right">
+              <p>
+                <%= link_to "Edit my profile", current_user %>
+                <%= link_to "Logout", session_path, method: :delete %>
+              </p>
+            </nav>
+        <% else %>
+            <h1 style="float: left">Welcome</h1>
+        <% end %>
     <% else %>
-        <h1 style="float: left">Welcome</h1>
+        <% if current_user %>
+            <h1 style="float: left">Welcome <%= current_user.first_name %></h1>
+            <nav style="float: right">
+              <p>
+                <%= link_to "Edit my profile", current_user %>
+                <%= link_to "Logout", session_path, method: :delete %>
+              </p>
+            </nav>
+        <% else %>
+            <h1 style="float: left">Welcome</h1>
+        <% end %>
     <% end %>
+
   </div>
 </header>
 <br style="clear: left">
