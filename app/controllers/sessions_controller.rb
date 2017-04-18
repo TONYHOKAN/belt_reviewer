@@ -10,4 +10,9 @@ class SessionsController < ApplicationController
       redirect_to url_for(:controller => :home_page, :action => :index)
     end
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url
+  end
 end

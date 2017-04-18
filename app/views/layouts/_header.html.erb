@@ -1,3 +1,16 @@
 <header id="page-header">
-  <h1>Welcome</h1>
+  <div id="header">
+    <% if current_user %>
+        <h1 style="float: left">Welcome <%= current_user.first_name %></h1>
+        <nav style="float: right">
+          <p>
+            <%= link_to "Edit my profile", current_user %>
+            <%= link_to "Logout", session_path, method: :delete %>
+          </p>
+        </nav>
+    <% else %>
+        <h1 style="float: left">Welcome</h1>
+    <% end %>
+  </div>
 </header>
+<br style="clear: left">
