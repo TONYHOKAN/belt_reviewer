@@ -18,7 +18,12 @@
               <%= link_to "Edit", event %>
               <%= link_to "Delete", event, method: :delete %>
           <% else %>
-
+              <% if is_user_joined_event? event.id, session[:user_id] %>
+                  Joining
+                  <%= link_to "Cancel", is_user_joined_event?(event.id, session[:user_id]), method: :delete %>
+              <% else %>
+                  <%= link_to "Join", {:controller => "registrations", :action => "new", :event_id => event.id} %>
+              <% end %>
           <% end %>
         </td>
       </tr>
