@@ -8,7 +8,7 @@ class Event < ApplicationRecord
 
   belongs_to :user
   has_many :registrations
-  has_many :join_event, through: :registrations, source: :user
+  has_many :joined_users, through: :registrations, source: :user
 
   def validate_future_date_event
     if date.present? && date < Date.today
