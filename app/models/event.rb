@@ -15,4 +15,12 @@ class Event < ApplicationRecord
       errors.add(:date, "Event date must be in future")
     end
   end
+
+  def self.find_same_state(state)
+    Event.where( "state = ?", state )
+  end
+
+  def self.find_not_same_state(state)
+    Event.where.not("state = ?", state)
+  end
 end

@@ -1,5 +1,5 @@
-<h1>All event</h1>
-<table id="events">
+<h1>Here are some of events at your state</h1>
+<table id="events_same_state">
   <tr>
     <th>Name</th>
     <th>Date</th>
@@ -7,12 +7,45 @@
     <th>Host</th>
     <th>Action/Status</th>
   <tr>
-    <% @events.each do |event| %>
+    <% @events_same_state.each do |event| %>
       <tr>
         <td><%= link_to event.name, event %></td>
         <td><%= event.date %></td>
         <td><%= event.location %></td>
-        <td>host data</td>
+        <td><%= event.user.first_name %></td>
+        <td>
+          <% if event.user.id == session[:user_id] %>
+              <%= link_to "Edit", event %>
+              <%= link_to "Delete", event, method: :delete %>
+          <% else %>
+              <% if is_user_joined_event? event.id, session[:user_id] %>
+                  Joining
+                  <%= link_to "Cancel", is_user_joined_event?(event.id, session[:user_id]), method: :delete %>
+              <% else %>
+                  <%= link_to "Join", {:controller => "registrations", :action => "new", :event_id => event.id} %>
+              <% end %>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+</table>
+<h1>Here are some of events not at your state</h1>
+<table id="events_not_same_state">
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Location</th>
+    <th>State</th>
+    <th>Host</th>
+    <th>Action/Status</th>
+  <tr>
+    <% @events_not_same_state.each do |event| %>
+      <tr>
+        <td><%= link_to event.name, event %></td>
+        <td><%= event.date %></td>
+        <td><%= event.location %></td>
+        <td><%= event.state %></td>
+        <td><%= event.user.first_name %></td>
         <td>
           <% if event.user.id == session[:user_id] %>
               <%= link_to "Edit", event %>

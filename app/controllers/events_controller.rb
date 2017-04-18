@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    @events_same_state = Event.find_same_state(find_session_user.state)
+    @events_not_same_state = Event.find_not_same_state(find_session_user.state)
+
     @event = Event.new
   end
 
@@ -33,5 +35,9 @@ class EventsController < ApplicationController
     flash[:error] = true
     flash[:error_count] = @event.errors.count
     flash[:full_error_messages] = @event.errors.full_messages
+  end
+
+  def find_session_user
+    User.find(session[:user_id])
   end
 end
