@@ -10,6 +10,9 @@ class User < ApplicationRecord
             uniqueness: {case_sensitive: false}
 
   has_many :events, dependent: :destroy
+  has_many :registrations, dependent: :destroy
+  has_many :join_event, through: :registrations, source: :event
+
   def self.authenticate(email, password)
     user = User.find_by(email: email)
     user && user.authenticate(password)
