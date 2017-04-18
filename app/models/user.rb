@@ -9,6 +9,7 @@ class User < ApplicationRecord
             format: /\A\S+@\S+\z/,
             uniqueness: {case_sensitive: false}
 
+  has_many :events, dependent: :destroy
   def self.authenticate(email, password)
     user = User.find_by(email: email)
     user && user.authenticate(password)
