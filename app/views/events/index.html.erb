@@ -17,3 +17,28 @@
       </tr>
   <% end %>
 </table>
+<h1>Add event</h1>
+
+<% if flash[:event] %>
+    <% @event=Event.new(flash[:event]) %>
+<% end %>
+<%= form_for @event do |e| %>
+    <%= render 'shared/errors' %>
+    <fieldset>
+      <li class="required">
+        <%= e.label :name %>
+        <%= e.text_field :name %>
+      </li>
+      <li class="required">
+        <%= e.label :date %>
+        <%= e.date_field :date %>
+      </li>
+      <li class="required">
+        <%= e.label :location %>
+        <%= e.text_field :location %>
+      </li>
+      <p>
+        <%= e.submit %>
+      </p>
+    </fieldset>
+<% end %>
