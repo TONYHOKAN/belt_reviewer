@@ -1,0 +1,19 @@
+<% if flash[:error] %>
+    <section id="errors">
+      <header>
+        <h2>
+          Oops! something wrong
+        </h2>
+        <h3>
+          Please correct the following
+          <%= pluralize(flash[:error_count], "error") %>
+        </h3>
+      </header>
+      <ul>
+        <% flash[:full_error_messages].each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
+    </section>
+<% end %>
+

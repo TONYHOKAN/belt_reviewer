@@ -13,6 +13,9 @@ class UsersController < ApplicationController
       redirect_to @user, notice: "Thanks"
     else
       flash[:user] = @user
+      flash[:error] = true
+      flash[:error_count] = @user.errors.count
+      flash[:full_error_messages] = @user.errors.full_messages
       redirect_to url_for(:controller => :home_page, :action => :index)
     end
   end

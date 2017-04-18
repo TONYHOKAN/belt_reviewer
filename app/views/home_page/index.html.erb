@@ -3,6 +3,7 @@
     <% @user=User.new(flash[:user]) %>
 <% end %>
 <%= form_for @user, :url => {:controller => 'users', :action => 'create'} do |f| %>
+    <%= render 'shared/errors'%>
     <fieldset>
       <li class="required">
         <%= f.label :first_name %>
