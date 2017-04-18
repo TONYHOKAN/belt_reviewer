@@ -1,0 +1,31 @@
+<header>Register</header>
+<% if flash[:user] %>
+    <% @user=User.new(flash[:user]) %>
+<% end %>
+<%= form_for @user, :url => {:controller => 'users', :action => 'create'} do |f| %>
+    <fieldset>
+      <li class="required">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+      </li>
+      <li class="required">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      </li>
+      <li class="required">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </li>
+      <li class="required">
+        <%= f.label :password %>
+        <%= f.text_field :password %>
+      </li>
+      <li class="required">
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation %>
+      </li>
+      <p>
+        <%= f.submit %>
+      </p>
+    </fieldset>
+<% end %>
