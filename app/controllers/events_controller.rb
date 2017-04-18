@@ -6,6 +6,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.user = User.find(session[:user_id])
     if !@event.save
       error_message
     end

@@ -6,6 +6,7 @@ class Event < ApplicationRecord
 
   validate :validate_future_date_event
 
+  belongs_to :user
 
   def validate_future_date_event
     if date.present? && date < Date.today
