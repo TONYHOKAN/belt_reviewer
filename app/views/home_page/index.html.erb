@@ -14,6 +14,14 @@
         <%= f.text_field :last_name %>
       </li>
       <li class="required">
+        <%= f.label :location %>
+        <%= f.text_field :location %>
+      </li>
+      <li class="required">
+        <%= f.label :state %>
+        <%= f.select :state, ['AA', 'BB', 'CC']%>
+      </li>
+      <li class="required">
         <%= f.label :email %>
         <%= f.text_field :email %>
       </li>
