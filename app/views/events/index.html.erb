@@ -37,6 +37,10 @@
         <%= e.label :location %>
         <%= e.text_field :location %>
       </li>
+      <li class="required">
+        <%= e.label :state %>
+        <%= e.select :state, ['AA', 'BB', 'CC']%>
+      </li>
       <p>
         <%= e.submit %>
       </p>
