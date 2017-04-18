@@ -15,7 +15,7 @@
       </tr>
       <tr>
         <td>People Who are joining the event</td>
-        <td></td>
+        <td><%= @event.joined_users.size %></td>
       </tr>
     </table>
   </div>
@@ -27,6 +27,13 @@
         <th>Location</th>
         <th>State</th>
       </tr>
+      <% @joined_users.each do |user|%>
+          <tr>
+            <td><%= user.first_name %></td>
+            <td><%= user.location %></td>
+            <td><%= user.state %></td>
+          </tr>
+      <% end%>
     </table>
   </div>
 </div>
