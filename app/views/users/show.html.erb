@@ -1,7 +1,22 @@
 <article id="user">
-
-  <header>
-    <h1><%= @user.first_name  %></h1>
-    <h2><%= @user.last_name %></h2>
-  </header>
+  <%= form_for @user do |f| %>
+      <%= render 'shared/errors' %>
+      <fieldset>
+        <li class="required">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name %>
+        </li>
+        <li class="required">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name %>
+        </li>
+        <li class="required">
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+        </li>
+        <p>
+          <%= f.submit %>
+        </p>
+      </fieldset>
+  <% end %>
 </article>
