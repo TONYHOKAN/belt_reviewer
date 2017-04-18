@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date: 2017-04-18
+  location: MyString
+  discussion: MyText
+  is_delete: false
+
+two:
+  name: MyString
+  date: 2017-04-18
+  location: MyString
+  discussion: MyText
+  is_delete: false
