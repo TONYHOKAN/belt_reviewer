@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if !@user.update(user_params)
       error_message
     end
-    redirect_to @user
+    redirect_to url_for(:controller => :events, :action => :index)
   end
 
   private

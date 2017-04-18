@@ -17,7 +17,7 @@
             <h1 style="float: left">Welcome <%= current_user.first_name %></h1>
             <nav style="float: right">
               <p>
-                <%= link_to "Edit my profile", current_user %>
+                <%= link_to "Event Dashboard", events_path %>
                 <%= link_to "Logout", session_path, method: :delete %>
               </p>
             </nav>
