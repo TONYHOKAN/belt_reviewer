@@ -1,6 +1,6 @@
 <header id="page-header">
   <div id="header">
-    <% if @event %>
+    <% if @event && !@event.new_record? %>
         <% if current_user %>
             <h1 style="float: left"><%= @event.name %></h1>
             <nav style="float: right">
