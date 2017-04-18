@@ -1,9 +1,9 @@
-<header>Register</header>
+<h1>Register</h1>
 <% if flash[:user] %>
     <% @user=User.new(flash[:user]) %>
 <% end %>
 <%= form_for @user, :url => {:controller => 'users', :action => 'create'} do |f| %>
-    <%= render 'shared/errors'%>
+    <%= render 'shared/errors' %>
     <fieldset>
       <li class="required">
         <%= f.label :first_name %>
@@ -27,6 +27,22 @@
       </li>
       <p>
         <%= f.submit %>
+      </p>
+    </fieldset>
+<% end %>
+<h1>Login</h1>
+<%= form_tag(session_path) do %>
+    <fieldset>
+      <p>
+        <%= label_tag :email %>
+        <%= email_field_tag :email, nil, autofocus: true %>
+      </p>
+      <p>
+        <%= label_tag :password %>
+        <%= password_field_tag :password, nil %>
+      </p>
+      <p>
+        <%= submit_tag "Login" %>
       </p>
     </fieldset>
 <% end %>
