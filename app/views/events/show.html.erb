@@ -39,8 +39,22 @@
 </div>
 <div id="right_div" style="float: right">
   <h1>Discussion about the event</h1>
-  <textarea name="disscussion" id="discussion" cols="60" rows="10">
-    <%= @event.discussion %>
+  <textarea name="disscussion" id="discussion" cols="80" rows="10">
+    <%= @comment_string %>
   </textarea>
   <h1>Add Comment:</h1>
+  <%= form_tag(comments_path) do %>
+      <fieldset>
+        <p>
+          <%= text_area_tag :comment, nil, rows: 10, cols: 60 %>
+        </p>
+        <p>
+          <%= hidden_field_tag :event_id, @event.id%>
+        </p>
+        <p>
+          <%= submit_tag "Submit Comments" %>
+        </p>
+      </fieldset>
+  <% end %>
+
 </div>
