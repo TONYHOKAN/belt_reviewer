@@ -9,6 +9,8 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :registrations, dependent: :destroy
   has_many :joined_users, through: :registrations, source: :user
+  has_many :comments, dependent: :destroy
+  has_many :user_comment, through: :comments, source: :user
 
 
   def validate_future_date_event

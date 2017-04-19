@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :registrations, dependent: :destroy
   has_many :joined_events, through: :registrations, source: :event
+  has_many :comments, dependent: :destroy
+  has_many :event_comment, through: :comments, source: :event
 
   def self.authenticate(email, password)
     user = User.find_by(email: email)
