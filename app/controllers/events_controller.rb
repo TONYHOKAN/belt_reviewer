@@ -18,6 +18,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @joined_users = @event.joined_users
+    @comment_string = event_comments
   end
 
   def destroy
@@ -39,5 +40,14 @@ class EventsController < ApplicationController
 
   def find_session_user
     User.find(session[:user_id])
+  end
+
+  def event_comments
+    comment_string=""
+    @event.comments.each do |comment|
+      comment_string += comment.user.first_name + " says: " + comment.comment + "\n"
+      comment_string += "---------------------------\n"
+    end
+    comment_string
   end
 end

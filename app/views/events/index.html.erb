@@ -51,7 +51,7 @@
               <%= link_to "Edit", event %>
               <%= link_to "Delete", event, method: :delete %>
           <% else %>
-              <% if is_user_joined_event? event.id, session[:user_id] %>
+              <% if is_user_joined_event? session[:user_id], event.id %>
                   Joining
                   <%= link_to "Cancel", is_user_joined_event?(event.id, session[:user_id]), method: :delete %>
               <% else %>
